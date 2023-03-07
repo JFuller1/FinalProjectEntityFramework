@@ -1,6 +1,12 @@
-﻿namespace FinalProjectEntityFramework.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace FinalProjectEntityFramework.Controllers
 {
-    public class ChoreController
+    public class ChoreController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
