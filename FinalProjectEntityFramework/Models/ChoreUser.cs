@@ -5,11 +5,8 @@ namespace FinalProjectEntityFramework.Models
     public class ChoreUser : IdentityUser
     {
         // Self Properties
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
-        // Navigation Properties
-        public virtual ICollection<Chore> Chores { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
 
     }
 }

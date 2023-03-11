@@ -1,0 +1,21 @@
+﻿@model FinalProjectEntityFramework.Models.ViewModels.CreateChoreViewModel;
+
+<h1>@Model.Name</h1>
+
+<form method="post" asp-action="SemiMonthlySubmitted" asp-controller="Chore">
+    <br />
+    @foreach (string month in ViewBag.Months)
+    {
+        <div>
+            <input type="checkbox" name="SelectedMonths" value="@month" id="check-@month" />
+            <label for="check-@month">@month</label>
+        </div>
+    }
+
+    <input type="hidden" name="Name" value="@Model.Name" />
+    <input type="hidden" name="ChosenCategory" value="@Model.ChosenCategory" />
+    <input type="hidden" name="ChosenUser" value="@Model.ChosenUser" />
+    <input type="hidden" name="ChosenChoreType" value="@Model.ChosenChoreType" />
+
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>

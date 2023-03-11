@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinalProjectEntityFramework.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ChoreUser>
     {
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Chore> Chores { get; set; }

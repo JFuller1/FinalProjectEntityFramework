@@ -1,0 +1,27 @@
+﻿@model FinalProjectEntityFramework.Models.ViewModels.CreateChoreViewModel;
+
+<h1>Create a new Chore</h1>
+
+<form method="post" asp-action="CreateChore" asp-controller="Chore">
+    <div class="form-control">
+        <label for="Name">Name of your chore</label>
+        <input type="text" id="Name" name="Name" />
+    </div>
+
+    <div>
+        <label asp-for="ChosenCategory"></label>
+        <select asp-for="ChosenCategory" asp-items="Model.Categories"></select>
+    </div>
+
+    <div>
+        <label asp-for="ChosenUser"></label>
+        <select asp-for="ChosenUser" asp-items="Model.User"></select>
+    </div>
+
+    <div>
+        <label asp-for="ChosenChoreType"></label>
+        <select asp-for="ChosenChoreType" asp-items="Model.ChoreType"></select>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>

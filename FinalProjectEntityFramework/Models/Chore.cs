@@ -12,8 +12,9 @@ namespace FinalProjectEntityFramework.Models
         Annual
     }
 
-    public enum Months
+    public enum Month
     {
+        Unassigned = -1,
         January,
         February,
         March,
@@ -32,7 +33,7 @@ namespace FinalProjectEntityFramework.Models
     {
         // Self Properties
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         public ChoreType ChoreType { get; set; }
         public bool IsComplete { get; set; }
 
@@ -41,10 +42,11 @@ namespace FinalProjectEntityFramework.Models
         public int? CategoryId { get; set; }
 
         // Navigation Properties
-        public virtual ChoreUser ChoreUser { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual ChoreUser? ChoreUser { get; set; }
+        public virtual Category Category { get; set; } = null!;
+
         [NotMapped]
-        public ICollection<Months> Months { get; set; }
+        public ICollection<Month>? Months { get; set; }
 
     }
 }
