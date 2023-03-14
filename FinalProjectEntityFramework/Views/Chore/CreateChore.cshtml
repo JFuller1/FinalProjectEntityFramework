@@ -5,7 +5,7 @@
 <form method="post" asp-action="CreateChore" asp-controller="Chore">
     <div class="form-control">
         <label for="Name">Name of your chore</label>
-        <input type="text" id="Name" name="Name" />
+        <input asp-for="Name"/>
     </div>
 
     <div>

@@ -9,6 +9,7 @@ namespace FinalProjectEntityFramework.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Chore> Chores { get; set; }
         public virtual DbSet<ChoreUser> ChoreUsers { get; set; }
+        public virtual DbSet<ChoreMonths> ChoreMonths { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

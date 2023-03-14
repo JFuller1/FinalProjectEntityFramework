@@ -4,6 +4,7 @@ using FinalProjectEntityFramework.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProjectEntityFramework.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230313162317_AddedChoreMonths")]
+    partial class AddedChoreMonths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace FinalProjectEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("FinalProjectEntityFramework.Models.Chore", b =>
@@ -69,7 +71,7 @@ namespace FinalProjectEntityFramework.Data.Migrations
 
                     b.HasIndex("ChoreUserId");
 
-                    b.ToTable("Chores", (string)null);
+                    b.ToTable("Chores");
                 });
 
             modelBuilder.Entity("FinalProjectEntityFramework.Models.ChoreMonths", b =>
@@ -90,7 +92,7 @@ namespace FinalProjectEntityFramework.Data.Migrations
 
                     b.HasIndex("ChoreId");
 
-                    b.ToTable("ChoreMonths", (string)null);
+                    b.ToTable("ChoreMonths");
                 });
 
             modelBuilder.Entity("FinalProjectEntityFramework.Models.ChoreUser", b =>

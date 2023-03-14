@@ -43,10 +43,7 @@ namespace FinalProjectEntityFramework.Models
 
         // Navigation Properties
         public virtual ChoreUser? ChoreUser { get; set; }
-        public virtual Category Category { get; set; } = null!;
-
-        [NotMapped]
-        public ICollection<Month>? Months { get; set; }
-
+        public virtual Category? Category { get; set; }
+        public ICollection<ChoreMonths> ChoreMonths { get; set; } = new List<ChoreMonths>();
     }
 }

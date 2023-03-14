@@ -1,0 +1,62 @@
+﻿@model FinalProjectEntityFramework.Models.ViewModels.ViewChoresViewModel;
+
+<h1>Chores</h1>
+
+<form method="post" asp-action="Chores" asp-controller="Chore">
+    <div>
+        <label asp-for="ChosenCategory"></label>
+        <select asp-for="ChosenCategory" asp-items="Model.Categories"></select>
+    </div>
+
+    <div>
+        <label asp-for="ChosenUser"></label>
+        <select asp-for="ChosenUser" asp-items="Model.User"></select>
+    </div>
+
+    <div>
+        <label asp-for="ChosenChoreType"></label>
+        <select asp-for="ChosenChoreType" asp-items="Model.ChoreType"></select>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Chore</th>
+            <th scope="col">Chore Type</th>
+            <th scope="col">Category</th>
+            <th scope="col">Person Assigned</th>
+            <th scope="col">Completion Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Chore chore in Model.Chores)
+        {
+            <tr>
+                <th scope="row">@chore.Id</th>
+                <td>@chore.Name</td>
+                <td>@chore.ChoreType</td>
+                
+                @if(chore.Category != null){
+                    <td>@chore.Category.Name</td>
+                } else {
+                    <td>Unassigned</td>
+                }
+
+                @if(chore.ChoreUser != null){
+                    <td>@chore.ChoreUser.FirstName @chore.ChoreUser.LastName</td>
+                } else {
+                    <td>Unassigned</td>
+                }
+
+                <td>@chore.IsComplete</td>
+
+                <td><a asp-action="Toggle" asp-route-id="@chore.Id">Toggle Completed</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

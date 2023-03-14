@@ -26,6 +26,11 @@ namespace FinalProjectEntityFramework.Controllers
         [HttpPost]
         public IActionResult CreateCategory(Category vm)
         {
+            if(vm.Name == null)
+            {
+                return View();
+            }
+
             Category category = new Category();
             category.Name = vm.Name;
 
