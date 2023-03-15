@@ -121,43 +121,23 @@ namespace FinalProjectEntityFramework.Controllers
             return RedirectToAction("CreateChore");
         }
 
-        public Chore CreateBaseChore(CreateChoreViewModel vm)
-        {
-            Chore chore = new Chore();
-            chore.Name = vm.Name;
-            chore.IsComplete = false;
-            //checking if it was left unassigned
-            if (vm.ChosenUser != "-1")
-            {
-                chore.ChoreUserId = vm.ChosenUser;
-                chore.ChoreUser = _db.Users.FirstOrDefault(u => u.Id == chore.ChoreUserId);
-            }
-            chore.ChoreType = vm.ChosenChoreType;
-            if (vm.ChosenCategory != "-1")
-            {
-                chore.CategoryId = Int32.Parse(vm.ChosenCategory);
-                chore.Category = _db.Categories.FirstOrDefault(c => c.Id == chore.CategoryId);
-            }
-
-            return chore;
-        }
-
-        public IActionResult Chores()
+        public IActionResult Chores(string filter1, string filter2, string filter3)
         {
             ViewChoresViewModel vm = new ViewChoresViewModel();
             vm.PopulateVm(_db);
             vm.Chores = DefaultSort();
 
+            vm.Chores = FilterByURL(vm.Chores, filter1, filter2, filter3);
+
             return View(vm);
         }
 
         [HttpPost]
-        public IActionResult Chores(ViewChoresViewModel vm)
+        public IActionResult Chores(ViewChoresViewModel vm, string filter1, string filter2, string filter3)
         {
             vm.PopulateVm(_db);
 
             vm.Chores = DefaultSort();
-
 
             if(vm.ChosenUser != "-2")
             {
@@ -191,6 +171,67 @@ namespace FinalProjectEntityFramework.Controllers
             }
 
             return View(vm);
+        }
+
+        public IActionResult ChoreDetails(int id)
+        {
+            Chore chore = _db.Chores.First(chore => chore.Id == id);
+
+            chore.Category = _db.Categories.FirstOrDefault(category =>  category.Id == chore.CategoryId);
+            chore.ChoreUser = _db.Users.FirstOrDefault(user => user.Id == chore.ChoreUserId);
+
+            var choreMonths = _db.ChoreMonths.Where(cm => cm.ChoreId == id).ToList();
+
+            foreach(var choreMonth in choreMonths)
+            {
+                chore.ChoreMonths.Add(choreMonth);
+            }
+
+            // It was adding the months twice, this was my fix
+            chore.ChoreMonths = chore.ChoreMonths.DistinctBy(cm => cm.Month).ToList();
+
+            return View(chore);
+        }
+
+        // TOGGLES 
+
+        public IActionResult ToggleOnDetails(int id)
+        {
+            Chore chore = _db.Chores.First(chore => chore.Id == id);
+            chore.IsComplete = !chore.IsComplete;
+            _db.SaveChanges();
+            return RedirectToAction("ChoreDetails", new { id = id });
+        }
+
+        public IActionResult Toggle(int id)
+        {
+            Chore chore = _db.Chores.First(chore => chore.Id == id);
+            chore.IsComplete = !chore.IsComplete;
+            _db.SaveChanges();
+            return RedirectToAction("Chores");
+        }
+
+        //HELPER FUNCTIONS
+
+        public Chore CreateBaseChore(CreateChoreViewModel vm)
+        {
+            Chore chore = new Chore();
+            chore.Name = vm.Name;
+            chore.IsComplete = false;
+            //checking if it was left unassigned
+            if (vm.ChosenUser != "-1")
+            {
+                chore.ChoreUserId = vm.ChosenUser;
+                chore.ChoreUser = _db.Users.FirstOrDefault(u => u.Id == chore.ChoreUserId);
+            }
+            chore.ChoreType = vm.ChosenChoreType;
+            if (vm.ChosenCategory != "-1")
+            {
+                chore.CategoryId = Int32.Parse(vm.ChosenCategory);
+                chore.Category = _db.Categories.FirstOrDefault(c => c.Id == chore.CategoryId);
+            }
+
+            return chore;
         }
 
         public ICollection<Chore> DefaultSort()
@@ -232,12 +273,28 @@ namespace FinalProjectEntityFramework.Controllers
             return choresSorted;
         }
 
-        public IActionResult Toggle(int id)
+        public ICollection<Chore> FilterByURL(ICollection<Chore> chores, string filter1, string filter2, string filter3)
         {
-            Chore chore = _db.Chores.First(chore => chore.Id == id);
-            chore.IsComplete = !chore.IsComplete;
-            _db.SaveChanges();
-            return RedirectToAction("Chores");
+            bool userFiltering = false;
+            bool monthFiltering = false;
+            bool categoryFiltering = false;
+
+            if (filter1 != null)
+            {
+                
+            }
+
+            if (filter2 != null)
+            {
+
+            }
+
+            if (filter3 != null)
+            {
+
+            }
+
+            return chores;
         }
     }
 }

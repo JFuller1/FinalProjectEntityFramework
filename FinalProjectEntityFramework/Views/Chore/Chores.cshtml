@@ -55,7 +55,10 @@
 
                 <td>@chore.IsComplete</td>
 
-                <td><a asp-action="Toggle" asp-route-id="@chore.Id">Toggle Completed</a></td>
+                <td>
+                    <a asp-action="Toggle" asp-route-id="@chore.Id">Toggle Completed</a> |
+                    <a asp-action="ChoreDetails" asp-route-id="@chore.Id">Details</a>
+                </td>
             </tr>
         }
     </tbody>

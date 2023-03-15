@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.Office.Interop.Excel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinalProjectEntityFramework.Models
 {
@@ -14,18 +16,43 @@ namespace FinalProjectEntityFramework.Models
 
     public enum Month
     {
+        [Display(Name = "Unassigned")]
         Unassigned = -1,
+
+        [Display(Name = "January")]
         January,
+
+        [Display(Name = "February")]
         February,
+
+        [Display(Name = "March")]
         March,
+
+        [Display(Name = "April")]
         April,
+
+        [Display(Name = "May")]
         May,
+
+        [Display(Name = "June")]
         June,
+
+        [Display(Name = "July")]
         July,
+
+        [Display(Name = "August")]
         August,
+
+        [Display(Name = "September")]
         September,
+
+        [Display(Name = "October")]
         October,
+
+        [Display(Name = "November")]
         November,
+
+        [Display(Name = "December")]
         December,
     }
 

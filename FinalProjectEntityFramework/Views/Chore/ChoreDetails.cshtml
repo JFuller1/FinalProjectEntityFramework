@@ -1,0 +1,38 @@
+﻿@model FinalProjectEntityFramework.Models.Chore;
+
+<h1>@Model.Name</h1>
+
+<p>@Model.ChoreType</p>
+<p>Is complete: @Model.IsComplete</p>
+
+@if(Model.ChoreUserId != null)
+{
+    <p>User: @Model.ChoreUser.FirstName @Model.ChoreUser.LastName</p>
+} else
+{
+    <p>User: Unassigned</p>
+}
+
+@if (Model.CategoryId != null)
+{
+    <p>Category: @Model.Category.Name</p>
+}
+else
+{
+    <p>Category: Unassigned</p>
+}
+
+@if(Model.ChoreMonths.Count != 0)
+{   
+    <p>Month(s):</p>
+    <ul>
+        @foreach(var month in Model.ChoreMonths){
+            <li>
+                @month.Month
+            </li>
+        }
+    </ul>
+}
+
+<a asp-action="Chores">Return to chores list</a> | 
+<a asp-action="ToggleOnDetails" asp-route-id="@Model.Id">Toggle completion</a>
