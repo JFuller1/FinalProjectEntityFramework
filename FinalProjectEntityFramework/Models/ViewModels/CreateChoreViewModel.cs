@@ -22,6 +22,8 @@ namespace FinalProjectEntityFramework.Models.ViewModels
 
         public CreateChoreViewModel(ApplicationDbContext _db)
         {
+            //Populates all the dropdowns
+
             foreach (var choreType in Enum.GetNames(typeof(ChoreType)))
             {
                 ChoreType.Add(new SelectListItem { Value = choreType, Text = choreType });

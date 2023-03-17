@@ -18,6 +18,11 @@
         <select asp-for="ChosenChoreType" asp-items="Model.ChoreType"></select>
     </div>
 
+    <div>
+        <label asp-for="ChosenCompletionFilter"></label>
+        <select asp-for="ChosenCompletionFilter" asp-items="Model.Complete"></select>
+    </div>
+
     <input type="submit" class="btn btn-primary" value="Submit" />
 </form>
 

@@ -12,10 +12,12 @@ namespace FinalProjectEntityFramework.Models.ViewModels
         public List<SelectListItem> ChoreType { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> User { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> Complete { get; set; } = new List<SelectListItem>();
 
         public string ChosenChoreType { get; set; }
         public string ChosenUser { get; set; }
         public string ChosenCategory { get; set; }
+        public string ChosenCompletionFilter { get; set; }
 
         public ViewChoresViewModel()
         {
@@ -26,6 +28,7 @@ namespace FinalProjectEntityFramework.Models.ViewModels
         {
             Chores = _db.Chores.ToList();
 
+            //Adds to all the navigation properties
             foreach (Chore chore in Chores)
             {
                 if (chore.ChoreUserId != null)
@@ -38,6 +41,8 @@ namespace FinalProjectEntityFramework.Models.ViewModels
                     chore.Category = _db.Categories.First(c => c.Id == chore.CategoryId);
                 }
             }
+
+            //Populates all the dropdowns
 
             ChoreType.Add(new SelectListItem { Value = "-2", Text = "Don't filter" });
             foreach (var choreType in Enum.GetNames(typeof(ChoreType)))
@@ -59,6 +64,10 @@ namespace FinalProjectEntityFramework.Models.ViewModels
             {
                 Categories.Add(new SelectListItem { Value = category.Id.ToString(), Text = category.Name });
             }
+
+            Complete.Add(new SelectListItem { Value = "-2", Text = "Don't filter" });
+            Complete.Add(new SelectListItem { Value = "1", Text = "Show incomplete" });
+            Complete.Add(new SelectListItem { Value = "2", Text = "Show complete" });
         }
     }
 }

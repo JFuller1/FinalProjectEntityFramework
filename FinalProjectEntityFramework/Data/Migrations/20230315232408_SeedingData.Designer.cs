@@ -4,6 +4,7 @@ using FinalProjectEntityFramework.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProjectEntityFramework.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230315232408_SeedingData")]
+    partial class SeedingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -336,52 +338,43 @@ namespace FinalProjectEntityFramework.Data.Migrations
                         {
                             Id = "1a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2bf438f1-1d34-404c-9377-3626b47d97b8",
+                            ConcurrencyStamp = "afe3a347-667a-4896-bc91-94694d0aace5",
                             Email = "email@gmail.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Jaeden",
                             LastName = "Fuller",
                             LockoutEnabled = false,
-                            NormalizedUserName = "EMAIL@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBHWOQIzfP+5z2TosKujlDhhdJwlqK1Jf9VeMaLggOXpSPT5XKqMC/wF5gl1oohWmw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d57ed745-b53d-4015-ae22-104b85072966",
-                            TwoFactorEnabled = false,
-                            UserName = "email@gmail.com"
+                            SecurityStamp = "aa16fa05-bdeb-48cc-a9aa-a7b4971db319",
+                            TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "2a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1f7ebe7-95cd-497f-aff9-79b79626a390",
+                            ConcurrencyStamp = "d71f2916-09a1-47a0-a705-b4e21f94df0f",
                             Email = "unoriginal@email.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Doe",
                             LockoutEnabled = false,
-                            NormalizedUserName = "UNORIGINAL@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDVcdX4DGss1RWAwQWkV1D86jbOym3ZQltY5tDuey6Uf4QpBYCGl3ZVpX+dV0Eu2pQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f3cc2d1-0ffb-4c69-94cf-b7c7ab622c01",
-                            TwoFactorEnabled = false,
-                            UserName = "unoriginal@email.com"
+                            SecurityStamp = "933e899b-976d-4092-a9e7-8787d8f72053",
+                            TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "3a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe58968c-15d0-4867-b78f-46e9b2d22231",
+                            ConcurrencyStamp = "44dfde02-c43e-44db-ae92-6069e80ca4ed",
                             Email = "moreunoriginal@email.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Jane",
                             LastName = "Doe",
                             LockoutEnabled = false,
-                            NormalizedUserName = "MOREUNORIGINAL@EMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPjlfSV7rbweMlM5DRtAQYDcqZx6npBUMiWWOavNlF8qacXgpVyI3Z5y9JqBybvvag==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4a731897-ff1c-4c58-95ff-cb623361da98",
-                            TwoFactorEnabled = false,
-                            UserName = "moreunoriginal@email.com"
+                            SecurityStamp = "bb8f3e3a-54d6-4731-b7ef-ff0e819d0220",
+                            TwoFactorEnabled = false
                         });
                 });
 

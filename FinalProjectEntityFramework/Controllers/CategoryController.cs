@@ -26,18 +26,26 @@ namespace FinalProjectEntityFramework.Controllers
         [HttpPost]
         public IActionResult CreateCategory(Category vm)
         {
+            // Checks if the category is invalid
             if(vm.Name == null)
             {
                 return View();
             }
 
+            // Adds category to the database 
             Category category = new Category();
             category.Name = vm.Name;
 
             _db.Add(category);
             _db.SaveChanges();
 
-            return View();
+            // redirects to a page which shows that the category was created successfully
+            return RedirectToAction("Success", category);
+        }
+
+        public IActionResult Success(Category vm)
+        {
+            return View(vm);
         }
     }
 }
