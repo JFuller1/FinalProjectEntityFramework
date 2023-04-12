@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'FinalProjectEntityFramework'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D897EB9A735C4C03AC8FF49817B34D6A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_95B5D063F4CB41219D9BF0126BFCCCB1 }}
           package: .
